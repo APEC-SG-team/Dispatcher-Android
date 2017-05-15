@@ -1,4 +1,4 @@
-package inbox;
+package ui.inbox;
 
 
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class InboxListFragment extends Fragment implements InboxListPresenter.View {
 
+    private InboxListPresenter presenter;
+    private InboxListInteractor inboxListInteractor;
 
     public InboxListFragment() {
         // Required empty public constructor
@@ -26,12 +28,15 @@ public class InboxListFragment extends Fragment implements InboxListPresenter.Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        inboxListInteractor = new InboxListInteractorImpl();
+        presenter = new InboxListPresenterImpl(this, inboxListInteractor);
+        presenter.getInboxList("1");
         return inflater.inflate(R.layout.fragment_inbox_list, container, false);
     }
 
     @Override
-    public void OnInboxListRetrieved(List<Object> inboxList) {
-        // TODO All
+    public void setInboxList(List<Object> inboxList) {
+        //TODO bind data from api to list View here
     }
 
     @Override
