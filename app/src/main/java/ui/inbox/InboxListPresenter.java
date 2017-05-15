@@ -13,7 +13,9 @@ public interface InboxListPresenter extends BasePresenter {
 
     void getInboxList(String id);
 
+
     interface View extends BaseView {
         void setInboxList(List<Object> inboxList);
+
     }
 }

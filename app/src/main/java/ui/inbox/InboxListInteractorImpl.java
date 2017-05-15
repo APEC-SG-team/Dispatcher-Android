@@ -1,6 +1,8 @@
 package ui.inbox;
 
-import java.util.Arrays;
+import android.os.Handler;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,15 +12,22 @@ import java.util.List;
 public class InboxListInteractorImpl implements InboxListInteractor {
 
     @Override
-    public void getInboxList(String id, OnReceiveInboxListListener onReceiveInboxListListener) {
-        // Fetch data from server here
-        onReceiveInboxListListener.onSuccess(createDummyInboxList());
+    public void getInboxList(String id, final OnReceiveInboxListListener onReceiveInboxListListener) {
+        // Fetch data from server here with Retrofit
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                onReceiveInboxListListener.onSuccess(createDummyInboxList());
+            }
+        }, 2000);
+
     }
 
     private List<Object> createDummyInboxList() {
-        Object inbox1 = new Object();
-        Object inbox2 = new Object();
-        Object inbox3 = new Object();
-        return Arrays.asList(inbox1, inbox2, inbox3);
+        List<Object> dummyList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Object dummy = new Object();
+            dummyList.add(dummy);
+        }
+        return dummyList;
     }
 }

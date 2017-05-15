@@ -5,9 +5,22 @@
     tools:context="ui.inbox.InboxListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/progressView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <include layout="@layout/item_loading" />
+    </FrameLayout>
+
+    <include layout="@layout/error_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvInboxList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
