@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 
+import ui.courier.CourierListFragment;
 import ui.inbox.InboxListFragment;
 
 
@@ -34,8 +35,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         switch (position) {
             case 0:
-                return new InboxListFragment();
-
+                return new CourierListFragment();
             case 1:
                 return new InboxListFragment();
 

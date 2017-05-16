@@ -64,6 +64,10 @@
     <dimen name="linearlayout_fix">500dp</dimen>
 
 
+    <!--Courieritem View-->
+    <dimen name="imageview_width">100dp</dimen>
+
+
     <!--Inbox View-->
     <dimen name="padding_list_row">16dp</dimen>
     <dimen name="messages_padding_left">72dp</dimen>
