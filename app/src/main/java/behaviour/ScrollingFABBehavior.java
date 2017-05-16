@@ -1,4 +1,4 @@
-package ui.behaviour; /**
+package behaviour; /**
  * Created by winhtaikaung on 16/5/17.
  */
 
