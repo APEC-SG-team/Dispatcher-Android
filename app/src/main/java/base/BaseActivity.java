@@ -4,6 +4,7 @@ package base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.apec.dispatcher.R;
 
@@ -22,9 +23,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
-
+        this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         toolBar = (Toolbar) this.findViewById(R.id.toolbar);
-
+        toolBar.setTitleTextColor(this.getColor(R.color.textColor));
         if (toolBar != null) {
             setSupportActionBar(toolBar);
             if (getSupportActionBar() != null) {
@@ -54,4 +55,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public Toolbar getToolBar() {
         return toolBar;
     }
+
+
 }

@@ -73,16 +73,20 @@ public class InboxListFragment extends Fragment implements InboxListPresenter.Vi
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mInboxListAdapter = new InboxListAdapter();
         mInboxListView.setLayoutManager(mLayoutManager);
+        this.showProgress();
         mEndlessRecyclerViewAdapter = new EndlessRecyclerViewAdapter(this.getActivity(), mInboxListAdapter, new EndlessRecyclerViewAdapter.RequestToLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
+
                 if (mCounter == 1) {
                     presenter.getInboxList("3");
                 } else {
                     presenter.getInboxList("3");
+
                 }
             }
         });
+        InboxListFragment.this.hideProgress();
         mInboxListView.setAdapter(mEndlessRecyclerViewAdapter);
     }
 

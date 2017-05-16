@@ -1,7 +1,6 @@
 package base;
 
 import android.content.Context;
-import android.graphics.PorterDuff;
 import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,9 +115,9 @@ public class EndlessRecyclerViewAdapter extends RecyclerViewAdapterWrapper {
 
         public PendingViewHolder(View itemView) {
             super(itemView);
-            ((ProgressBar) itemView).getIndeterminateDrawable()
-                    .setColorFilter(context.getResources().getColor(R.color.colorPrimary),
-                            PorterDuff.Mode.SRC_ATOP);
+            ((ProgressBar) itemView).setProgressDrawable(context.getResources().getDrawable(R.drawable.progress_drawable));
+//                    .setColorFilter(context.getResources().getColor(R.color.colorPrimary),
+//                            PorterDuff.Mode.SRC_ATOP);
         }
     }
 }

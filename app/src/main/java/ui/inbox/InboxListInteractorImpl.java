@@ -15,7 +15,8 @@ public class InboxListInteractorImpl implements InboxListInteractor {
     public void getInboxList(String id, final OnReceiveInboxListListener onReceiveInboxListListener) {
         // Fetch data from server here with Retrofit
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 onReceiveInboxListListener.onSuccess(createDummyInboxList());
             }
         }, 2000);

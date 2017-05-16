@@ -16,6 +16,8 @@ import base.BaseAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static base.EndlessRecyclerViewAdapter.TYPE_PENDING;
+
 /**
  * Created by winhtaikaung on 15/5/17.
  */
@@ -44,14 +46,17 @@ public class InboxListAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> {
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        ViewHolder vh =(ViewHolder) holder;
-        if(vh != null){
-            if (mInboxList.get(position) != null) {
-                Object inbox = mInboxList.get(position);
-                // TODO Bind Text and Image here
+        if (getItemViewType(position) != TYPE_PENDING) {
+            ViewHolder vh = (ViewHolder) holder;
+            if (vh != null) {
+                if (mInboxList.get(position) != null) {
+                    Object inbox = mInboxList.get(position);
+                    // TODO Bind Text and Image here
 //                Picasso.with(mContext).load("https://placeimg.com/640/480/" + artist.getName()).into(vh.ivProfile);
+                }
             }
         }
+
     }
 
     @Override
