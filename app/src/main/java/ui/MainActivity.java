@@ -18,6 +18,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.tabs)
     TabLayout tabLayout;
+
+
     String[] titles = {"FAVOURITES", "PARKINGS", "FAVOURITES", "PARKINGS", "FAVOURITES"};
     private int[] tabIcons = {
             R.mipmap.ic_product,
@@ -36,6 +38,8 @@ public class MainActivity extends BaseActivity {
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+
 
     }
 
