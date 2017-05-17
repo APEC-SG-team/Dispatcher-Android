@@ -65,7 +65,7 @@ public class CourierListFragment extends Fragment implements CourierListPresente
         return v;
     }
 
-    void init(){
+    void init() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mCouruerMerchantAdapter = new CourierMerchantListAdapter(true);
         mInboxListView.setLayoutManager(mLayoutManager);

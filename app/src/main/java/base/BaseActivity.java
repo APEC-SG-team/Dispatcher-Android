@@ -1,12 +1,16 @@
 package base;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.apec.dispatcher.R;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -22,10 +26,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/maven-pro-regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
         setContentView(getLayoutResource());
         this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         toolBar = (Toolbar) this.findViewById(R.id.toolbar);
-        toolBar.setTitleTextColor(this.getColor(R.color.textColor));
+        toolBar.setTitleTextColor(this.getResources().getColor(R.color.textColor));
         if (toolBar != null) {
             setSupportActionBar(toolBar);
             if (getSupportActionBar() != null) {
@@ -54,6 +63,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public Toolbar getToolBar() {
         return toolBar;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 
