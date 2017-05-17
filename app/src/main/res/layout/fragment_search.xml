@@ -44,6 +44,7 @@
             android:layout_marginTop="@dimen/default_padding_medium"
             android:background="@drawable/gray_rectangle_large"
             android:drawableLeft="@drawable/ic_scale"
+            android:numeric="decimal"
             android:hint="@string/weight" />
 
 

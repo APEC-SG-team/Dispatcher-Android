@@ -42,12 +42,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return new InboxListFragment();
 
             case 2:
-                return new InboxListFragment();
-
-            case 3:
                 return new SearchFragment();
 
-            case 4:
+            case 3:
                 return new ProfileFragment();
 
         }

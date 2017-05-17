@@ -11,8 +11,9 @@ import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ui.adapters.ViewPagerAdapter;
+import ui.profile.ProfileFragment;
 
-public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, ProfileFragment.IChangeNavIcon {
     @BindView(R.id.pager)
     ViewPager viewPager;
 
@@ -20,10 +21,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     TabLayout tabLayout;
 
 
-    String[] titles = {"Product", "Merchants", "Inbox", "Search", "Profile"};
+    String[] titles = {"Carrier", "Inbox", "Search", "Profile"};
     private int[] tabIcons = {
-            R.mipmap.ic_product,
-            R.mipmap.ic_content,
+            R.drawable.ic_carrier,
             R.mipmap.ic_inbox,
             R.mipmap.ic_search,
             R.mipmap.ic_profile
@@ -35,6 +35,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), titles);
+
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOnPageChangeListener(this);
         tabLayout.setupWithViewPager(viewPager);
@@ -56,7 +57,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private void setupTabIcons() {
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < tabIcons.length; i++) {
             View iconView = getLayoutInflater().inflate(R.layout.custom_tab, null);
             iconView.findViewById(R.id.icon).setBackgroundResource(tabIcons[i]);
             tabLayout.getTabAt(i).setCustomView(iconView);
@@ -77,5 +78,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+
+    @Override
+    public void changeBottomNavIcon(int iconPositon, int resourceId) {
+        tabLayout.getTabAt(iconPositon).getCustomView().findViewById(R.id.icon).setBackgroundResource(resourceId);
     }
 }

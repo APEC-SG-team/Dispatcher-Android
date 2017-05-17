@@ -5,10 +5,10 @@
     <color name="colorAccent">#353535</color>
 
     <color name="textColor">#353535</color>
-    <color name="toolbarColor">#ececec</color>
+    <color name="toolbarColor">#e4e4e4</color>
 
     <color name="card_bgColor">#f2f2f2</color>
-    <color name="default_bgColor">#dfdfdf</color>
+    <color name="default_bgColor">#ececec</color>
 
 
     <color name="from">#000000</color>

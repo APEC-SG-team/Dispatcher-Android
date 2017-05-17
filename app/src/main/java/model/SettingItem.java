@@ -10,6 +10,7 @@ public class SettingItem {
     private String userName;
     private String settingTitle;
     private int iconResId;
+    private boolean isSwitch = false;
 
     public SettingItem SettingAvatarItem(String avatarUrl, String username) {
         this.avatarUrl = avatarUrl;
@@ -20,6 +21,13 @@ public class SettingItem {
     public SettingItem SettingListItem(String settingTitle, int iconResId) {
         this.settingTitle = settingTitle;
         this.iconResId = iconResId;
+        return this;
+    }
+
+    public SettingItem SettingListItem(String settingTitle, int iconResId, boolean isSwitch) {
+        this.settingTitle = settingTitle;
+        this.iconResId = iconResId;
+        this.setSwitch(isSwitch);
         return this;
     }
 
@@ -53,5 +61,13 @@ public class SettingItem {
 
     public void setIconResId(int iconResId) {
         this.iconResId = iconResId;
+    }
+
+    public boolean isSwitch() {
+        return isSwitch;
+    }
+
+    public void setSwitch(boolean aSwitch) {
+        isSwitch = aSwitch;
     }
 }

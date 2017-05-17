@@ -78,11 +78,10 @@ public class InboxListFragment extends Fragment implements InboxListPresenter.Vi
             @Override
             public void onLoadMoreRequested() {
 
-                if (mCounter == 1) {
+                if (mCounter < 5) {
                     presenter.getInboxList("3");
                 } else {
                     presenter.getInboxList("3");
-
                 }
             }
         });

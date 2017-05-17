@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ import ui.adapters.ProfileViewAdapter;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment implements ProfileListPresenter.View {
+public class ProfileFragment extends Fragment implements ProfileListPresenter.View, ProfileViewAdapter.ISettingSwitchHandler {
 
     private ProfileListPresenter presenter;
     private ProfileListInteractor inboxListInteractor;
@@ -67,7 +68,7 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
 
     void init() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
-        mProfileListAdapter = new ProfileViewAdapter();
+        mProfileListAdapter = new ProfileViewAdapter(ProfileFragment.this);
         mProfileListView.setLayoutManager(mLayoutManager);
         this.showProgress();
         mEndlessRecyclerViewAdapter = new EndlessRecyclerViewAdapter(this.getActivity(), mProfileListAdapter, new EndlessRecyclerViewAdapter.RequestToLoadMoreListener() {
@@ -128,4 +129,20 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
         mProfileListView.setVisibility(View.VISIBLE);
         tvErrorText.setText(message);
     }
+
+    @Override
+    public void OnSettingSwitchChanged(CompoundButton view, boolean checked) {
+        IChangeNavIcon iChangeNavIcon = (IChangeNavIcon) this.getActivity();
+        if (checked) {
+            iChangeNavIcon.changeBottomNavIcon(0, R.mipmap.ic_product);
+        } else {
+            iChangeNavIcon.changeBottomNavIcon(0, R.drawable.ic_carrier);
+        }
+
+    }
+
+    public interface IChangeNavIcon {
+        void changeBottomNavIcon(int iconPositon, int resourceId);
+    }
+
 }
