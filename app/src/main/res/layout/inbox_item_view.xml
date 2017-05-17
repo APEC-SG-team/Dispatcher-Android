@@ -66,6 +66,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/ivBgProfile"
                 android:layout_width="@dimen/icon_width_height"
                 android:layout_height="@dimen/icon_width_height"
                 android:src="@drawable/bg_circle" />

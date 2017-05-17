@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profile_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_bgColor"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/collapsingtoolbar_expanded_title_margin_start"
+    android:paddingLeft="@dimen/default_padding_large"
+    android:paddingRight="@dimen/default_padding_large"
+    android:paddingTop="@dimen/collapsingtoolbar_expanded_title_margin_start">
+
+    <ImageView
+        android:id="@+id/avatar_iv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/lyNameWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/avatar_iv"
+        android:layout_weight="16"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/TV_DEFAULT_LARGE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

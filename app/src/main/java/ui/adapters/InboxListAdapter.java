@@ -15,6 +15,7 @@ import java.util.List;
 import base.BaseAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import utils.Utils;
 
 import static base.EndlessRecyclerViewAdapter.TYPE_PENDING;
 
@@ -51,8 +52,8 @@ public class InboxListAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> {
             if (vh != null) {
                 if (mInboxList.get(position) != null) {
                     Object inbox = mInboxList.get(position);
-                    // TODO Bind Text and Image here
-//                Picasso.with(mContext).load("https://placeimg.com/640/480/" + artist.getName()).into(vh.ivProfile);
+                    vh.ivBgProfile.setImageDrawable(Utils.getRandomDrawableBg(mContext));
+
                 }
             }
         }
@@ -79,6 +80,9 @@ public class InboxListAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> {
 
         @BindView(R.id.icon_profile)
         ImageView ivProfile;
+
+        @BindView(R.id.ivBgProfile)
+        ImageView ivBgProfile;
 
         public ViewHolder(View itemView, InboxListAdapter adapter) {
             super(itemView);

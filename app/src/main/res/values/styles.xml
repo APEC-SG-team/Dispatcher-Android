@@ -28,6 +28,27 @@
         <item name="android:background">@color/toolbarColor</item>
     </style>
 
+    <style name="TV_DEFAULT_BOLD" parent="android:Widget.TextView">
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_medium_extra</item>
+    </style>
+
+    <style name="TV_DEFAULT_LARGE" parent="android:Widget.TextView">
+
+        <item name="fontPath">fonts/maven-pro-regular.ttf</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="BUTTON_DEFAULT_BLACK_BOLD" parent="android:Widget.Button">
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_medium_extra</item>
+    </style>
+
+
     <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Button">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/darker_gray</item>

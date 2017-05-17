@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apec.dispatcher.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,8 @@ public class CourierMerchantListAdapter extends BaseAdapter<BaseAdapter.BaseView
         if (holder.getItemViewType() == COURIER_VIEW_HOLDER) {
             CourierViewHolder vh = (CourierViewHolder) holder;
             //TODO data Binding for Courier View Holder
+
+            Picasso.with(mContext).load("https://randomuser.me/api/portraits/men/" + position + ".jpg").into(vh.ivCourier);
         } else if (holder.getItemViewType() == MERCHANT_VIEW_HOLDER) {
 
         } else {

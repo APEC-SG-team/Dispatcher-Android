@@ -1,0 +1,57 @@
+package model;
+
+/**
+ * Created by winhtaikaung on 17/5/17.
+ */
+
+public class SettingItem {
+
+    private String avatarUrl;
+    private String userName;
+    private String settingTitle;
+    private int iconResId;
+
+    public SettingItem SettingAvatarItem(String avatarUrl, String username) {
+        this.avatarUrl = avatarUrl;
+        this.userName = username;
+        return this;
+    }
+
+    public SettingItem SettingListItem(String settingTitle, int iconResId) {
+        this.settingTitle = settingTitle;
+        this.iconResId = iconResId;
+        return this;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getSettingTitle() {
+        return settingTitle;
+    }
+
+    public void setSettingTitle(String settingTitle) {
+        this.settingTitle = settingTitle;
+    }
+
+    public int getIconResId() {
+        return iconResId;
+    }
+
+    public void setIconResId(int iconResId) {
+        this.iconResId = iconResId;
+    }
+}

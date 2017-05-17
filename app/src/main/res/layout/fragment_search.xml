@@ -62,6 +62,7 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/BUTTON_DEFAULT_BLACK_BOLD"
         android:text="@string/Search" />
 
 </FrameLayout>
