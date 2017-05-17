@@ -8,9 +8,7 @@
     <color name="toolbarColor">#ececec</color>
 
     <color name="card_bgColor">#f2f2f2</color>
-    <color name="default_bgColor">#d1d1d1</color>
-
-
+    <color name="default_bgColor">#dfdfdf</color>
 
 
     <color name="from">#000000</color>

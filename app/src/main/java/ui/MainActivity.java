@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ui.adapters.ViewPagerAdapter;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
     @BindView(R.id.pager)
     ViewPager viewPager;
 
@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
     TabLayout tabLayout;
 
 
-    String[] titles = {"FAVOURITES", "PARKINGS", "FAVOURITES", "PARKINGS", "FAVOURITES"};
+    String[] titles = {"Product", "Merchants", "Inbox", "Search", "Profile"};
     private int[] tabIcons = {
             R.mipmap.ic_product,
             R.mipmap.ic_content,
@@ -36,9 +36,9 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), titles);
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOnPageChangeListener(this);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-
 
 
     }
@@ -64,4 +64,18 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        this.setTitle(titles[position]);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }

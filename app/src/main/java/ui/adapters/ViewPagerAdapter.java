@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import ui.courier.CourierListFragment;
 import ui.inbox.InboxListFragment;
+import ui.search.SearchFragment;
 
 
 /**
@@ -43,7 +44,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return new InboxListFragment();
 
             case 3:
-                return new InboxListFragment();
+                return new SearchFragment();
 
             case 4:
                 return new InboxListFragment();
