@@ -19,12 +19,16 @@ import java.util.List;
 import base.EndlessRecyclerViewAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ui.MainActivity;
 import ui.adapters.ProfileViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment implements ProfileListPresenter.View, ProfileViewAdapter.ISettingSwitchHandler {
+
+
+    public static String IS_MERCHANT = "IS_MERCHANT";
 
     private ProfileListPresenter presenter;
     private ProfileListInteractor inboxListInteractor;
@@ -47,6 +51,7 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
 
     private ProfileViewAdapter mProfileListAdapter;
     private EndlessRecyclerViewAdapter mEndlessRecyclerViewAdapter;
+    private MainActivity activity;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -58,6 +63,7 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, v);
+        activity = ((MainActivity) this.getActivity());
 
         inboxListInteractor = new ProfileListInteractorImpl();
         presenter = new ProfileListPresenterImpl(this, inboxListInteractor);
@@ -96,7 +102,6 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
             }
             mProfileListAdapter.setmProfileList(this.mInboxList);
             mEndlessRecyclerViewAdapter.onDataReady(false);
-//            mCounter++;
 
         } else {
             mEndlessRecyclerViewAdapter.onDataReady(false);
@@ -134,8 +139,13 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
     public void OnSettingSwitchChanged(CompoundButton view, boolean checked) {
         IChangeNavIcon iChangeNavIcon = (IChangeNavIcon) this.getActivity();
         if (checked) {
+            activity.getSharedPref().setBooleanPreference(IS_MERCHANT, checked);
+//            SettingItem item = (SettingItem) this.mInboxList.get((Integer) view.getTag());
+            mProfileListAdapter.setmProfileList(this.mInboxList);
             iChangeNavIcon.changeBottomNavIcon(0, R.mipmap.ic_product);
         } else {
+            activity.getSharedPref().setBooleanPreference(IS_MERCHANT, checked);
+            mProfileListAdapter.setmProfileList(this.mInboxList);
             iChangeNavIcon.changeBottomNavIcon(0, R.drawable.ic_carrier);
         }
 

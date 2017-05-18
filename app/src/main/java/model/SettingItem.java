@@ -11,6 +11,7 @@ public class SettingItem {
     private String settingTitle;
     private int iconResId;
     private boolean isSwitch = false;
+    private boolean isChecked = false;
 
     public SettingItem SettingAvatarItem(String avatarUrl, String username) {
         this.avatarUrl = avatarUrl;
@@ -24,10 +25,11 @@ public class SettingItem {
         return this;
     }
 
-    public SettingItem SettingListItem(String settingTitle, int iconResId, boolean isSwitch) {
+    public SettingItem SettingListItem(String settingTitle, int iconResId, boolean isSwitch, boolean isChecked) {
         this.settingTitle = settingTitle;
         this.iconResId = iconResId;
         this.setSwitch(isSwitch);
+        this.setChecked(isChecked);
         return this;
     }
 
@@ -69,5 +71,13 @@ public class SettingItem {
 
     public void setSwitch(boolean aSwitch) {
         isSwitch = aSwitch;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }

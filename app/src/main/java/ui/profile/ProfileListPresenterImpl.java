@@ -25,7 +25,6 @@ public class ProfileListPresenterImpl implements ProfileListPresenter, ProfileLi
 
     @Override
     public void onSuccess(List<Object> profileList) {
-
         mProfileListPresenterView.setProfileList(profileList);
         mProfileListPresenterView.hideProgress();
     }

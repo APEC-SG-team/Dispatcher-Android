@@ -21,12 +21,15 @@ import behaviour.CircleTransform;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.SettingItem;
+import utils.MySharedPreference;
+
+import static ui.profile.ProfileFragment.IS_MERCHANT;
 
 /**
  * Created by winhtaikaung on 17/5/17.
  */
 
-public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> {
+public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> implements SwitchCompat.OnCheckedChangeListener {
 
     private int HEADER_VIEW = 000;
     private int DETAIL_ITEM_VIEW = 111;
@@ -35,19 +38,23 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
     Context mContext;
     List<Object> mProfileList;
     Fragment mFragment;
+    private boolean onBind;
 
     public ProfileViewAdapter() {
         mProfileList = new ArrayList<>();
     }
 
     public ProfileViewAdapter(Fragment fragment) {
+
         mProfileList = new ArrayList<>();
         mFragment = fragment;
     }
 
     public void setmProfileList(List<Object> profileList) {
-        this.mProfileList = profileList;
-        notifyDataSetChanged();
+        if (!onBind) {
+            this.mProfileList = profileList;
+            notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -75,6 +82,7 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
+
         int viewType = getItemViewType(position);
         if (viewType == HEADER_VIEW) {
             HeaderViewHolder vh = (HeaderViewHolder) holder;
@@ -91,9 +99,13 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
         } else if (viewType == DETAIL_ITEM_VIEW_SWITCH) {
             DetailListItemSwitchViewHolder vh = (DetailListItemSwitchViewHolder) holder;
             SettingItem viewItem = (SettingItem) mProfileList.get(position);
-            vh.tvTitle.setText(viewItem.getSettingTitle());
+            vh.swCahangeType.setOnCheckedChangeListener(this);
+            onBind = true;
+            vh.swCahangeType.setChecked(MySharedPreference.getInstance(mContext).getBooleanPreference(IS_MERCHANT, false));
+            onBind = false;
 
         }
+
 
     }
 
@@ -117,6 +129,13 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
 
     public interface ISettingSwitchHandler {
         void OnSettingSwitchChanged(CompoundButton view, boolean checked);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        ISettingSwitchHandler handler = (ISettingSwitchHandler) mFragment;
+        handler.OnSettingSwitchChanged(compoundButton, b);
+
     }
 
     class HeaderViewHolder extends BaseViewHolder {
@@ -151,7 +170,7 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
 
     }
 
-    class DetailListItemSwitchViewHolder extends BaseViewHolder implements SwitchCompat.OnCheckedChangeListener {
+    class DetailListItemSwitchViewHolder extends BaseViewHolder {
 
         @BindView(R.id.tvTitle)
         TextView tvTitle;
@@ -163,15 +182,9 @@ public class ProfileViewAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> 
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
-            swCahangeType.setOnCheckedChangeListener(this);
+
+
             mAdapter = adapter;
-        }
-
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            ISettingSwitchHandler handler = (ISettingSwitchHandler) mFragment;
-            handler.OnSettingSwitchChanged(compoundButton, b);
-
         }
 
 
