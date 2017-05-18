@@ -10,7 +10,7 @@ import com.apec.dispatcher.R;
 import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ui.courierdetail.CourierDetailFragment;
+import ui.itemdetail.PackageDetailFragment;
 
 public class DetailActivity extends BaseActivity {
 
@@ -22,7 +22,7 @@ public class DetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         if (savedInstanceState == null) {
-            Fragment newFragment = new CourierDetailFragment();
+            Fragment newFragment = new PackageDetailFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.container, newFragment).commit();
         }
@@ -35,8 +35,4 @@ public class DetailActivity extends BaseActivity {
     }
 
 
-    @Override
-    public void setTitle(CharSequence title) {
-        this.setTitle("Co");
-    }
 }
