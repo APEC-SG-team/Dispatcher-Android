@@ -11,6 +11,7 @@ import com.apec.dispatcher.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import utils.MySharedPreference;
 
 
 /**
@@ -22,6 +23,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar toolBar;
+    private MySharedPreference mySharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+        mySharedPreference = new MySharedPreference(this);
         setContentView(getLayoutResource());
         this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         toolBar = (Toolbar) this.findViewById(R.id.toolbar);
@@ -49,6 +52,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(b);
         }
+    }
+
+    public MySharedPreference getSharedPref() {
+        return this.mySharedPreference;
     }
 
     @Override

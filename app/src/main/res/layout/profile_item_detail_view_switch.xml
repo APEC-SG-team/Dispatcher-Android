@@ -25,13 +25,24 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="5"
-                android:text="demo" />
+                android:gravity="center"
+                android:text="Merchant" />
 
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/swChangeType"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="right" />
+
+            <TextView
+                android:id="@+id/tvCarrier"
+                style="@style/TV_DEFAULT_LARGE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text="Carrier" />
         </LinearLayout>
 
         <TextView

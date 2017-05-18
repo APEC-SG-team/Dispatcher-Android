@@ -13,6 +13,8 @@ import butterknife.ButterKnife;
 import ui.adapters.ViewPagerAdapter;
 import ui.profile.ProfileFragment;
 
+import static ui.profile.ProfileFragment.IS_MERCHANT;
+
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, ProfileFragment.IChangeNavIcon {
     @BindView(R.id.pager)
     ViewPager viewPager;
@@ -40,6 +42,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         viewPager.setOnPageChangeListener(this);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+        viewPager.setCurrentItem(0);
 
 
     }
@@ -62,6 +65,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
             iconView.findViewById(R.id.icon).setBackgroundResource(tabIcons[i]);
             tabLayout.getTabAt(i).setCustomView(iconView);
         }
+        if (this.getSharedPref().getBooleanPreference(IS_MERCHANT, false)) {
+            this.titles[0] = "Packages";
+            changeBottomNavIcon(0, R.mipmap.ic_product);
+        } else {
+            this.titles[0] = "Carrier";
+            changeBottomNavIcon(0, R.drawable.ic_carrier);
+        }
 
     }
 
@@ -83,6 +93,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void changeBottomNavIcon(int iconPositon, int resourceId) {
+        if (this.getSharedPref().getBooleanPreference(IS_MERCHANT, false)) {
+            this.titles[0] = "Packages";
+        } else {
+            this.titles[0] = "Carrier";
+        }
         tabLayout.getTabAt(iconPositon).getCustomView().findViewById(R.id.icon).setBackgroundResource(resourceId);
     }
 }

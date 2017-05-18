@@ -36,7 +36,8 @@ public class ProfileListInteractorImpl implements ProfileListInteractor {
             Object dummy = new SettingItem().SettingListItem(mSettingListTitle[i], mSettingListIcons[i]);
             dummyList.add(dummy);
         }
-        dummyList.add(new SettingItem().SettingListItem("Want to merchant ?", R.mipmap.ic_content, true));
+
+        dummyList.add(new SettingItem().SettingListItem("Want to merchant ?", R.mipmap.ic_content, true, true));
         return dummyList;
     }
 }
