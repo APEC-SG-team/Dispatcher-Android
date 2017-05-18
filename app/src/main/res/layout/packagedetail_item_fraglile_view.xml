@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TV_DEFAULT_LARGE_BOLD"
+        android:text="Roburstness" />
+    <LinearLayout
+        android:padding="@dimen/default_padding_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Fragile?" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/chkIsFragile"
+            android:layout_width="match_parent"
+            android:enabled="false"
+            android:checked="true"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</LinearLayout>

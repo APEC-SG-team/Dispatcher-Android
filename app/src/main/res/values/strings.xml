@@ -9,4 +9,6 @@
     <string name="weight">Weight</string>
     <string name="Date">Date</string>
     <string name="Search">Search</string>
+    <string name="make_offer">Make Offer</string>
+    <string name="demoDescription">You can submit refund requests up to 15 days after your order has been completed. You can do this by opening a dispute in the order details page. Please note that you can only open one dispute per order.</string>
 </resources>
