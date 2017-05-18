@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TV_DEFAULT_LARGE_BOLD"
-        android:text="Delivery Status" />
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_padding_large"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
+            style="@style/BUTTON_DEFAULT_BLACK_BOLD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Delivary Status" />
+            android:text="@string/send_offer" />
 
-        <TextView
+        <Button
+            style="@style/BUTTON_DEFAULT_BLACK_BOLD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="On Going" />
-
+            android:text="@string/chat" />
     </LinearLayout>
 </LinearLayout>

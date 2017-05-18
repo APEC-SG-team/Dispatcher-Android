@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         style="@style/TV_DEFAULT_LARGE_BOLD"
         android:text="Description" />
+
     <TextView
         android:id="@+id/tvDescription"
         android:padding="@dimen/default_padding_large"

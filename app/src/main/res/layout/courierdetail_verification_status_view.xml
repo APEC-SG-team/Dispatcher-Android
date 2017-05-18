@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TV_DEFAULT_LARGE_BOLD"
-        android:text="Delivery Status" />
+        android:text="Verify" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Delivary Status" />
+            android:text="Verification Status" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="On Going" />
+            android:text="Verified" />
 
     </LinearLayout>
 </LinearLayout>

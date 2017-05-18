@@ -2,12 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.courierdetail.CourierDetailFragment">
-
+    tools:context="ui.itemdetail.PackageDetailFragment">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/progressView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <include layout="@layout/item_loading" />
+    </FrameLayout>
+
+    <include layout="@layout/error_view" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPackageDetailViewList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Courier Detail" />
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TV_DEFAULT_LARGE_BOLD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Review" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding_large">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:src="@drawable/ic_smile_emoticon"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="Happiness" />
+
+            <TextView
+                android:id="@+id/tvWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="1k" />
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:src="@drawable/ic_neutral_emoticon"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="Happiness" />
+
+            <TextView
+                android:id="@+id/tvHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="1" />
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:src="@drawable/ic_sad_emoticon"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="Happiness" />
+
+            <TextView
+                android:id="@+id/tvDepth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gray_rectangle"
+                android:gravity="center"
+                android:padding="@dimen/default_padding_medium"
+                android:text="-" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

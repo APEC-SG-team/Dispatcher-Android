@@ -10,7 +10,7 @@ import com.apec.dispatcher.R;
 import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ui.itemdetail.PackageDetailFragment;
+import ui.courierdetail.CourierDetailFragment;
 
 public class DetailActivity extends BaseActivity {
 
@@ -22,7 +22,7 @@ public class DetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         if (savedInstanceState == null) {
-            Fragment newFragment = new PackageDetailFragment();
+            Fragment newFragment = new CourierDetailFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.container, newFragment).commit();
         }

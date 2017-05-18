@@ -14,6 +14,7 @@
     </FrameLayout>
 
     <include layout="@layout/error_view" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPackageDetailViewList"
         android:layout_width="match_parent"
