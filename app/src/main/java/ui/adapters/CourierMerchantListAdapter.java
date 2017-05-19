@@ -16,6 +16,7 @@ import java.util.List;
 import base.BaseAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import model.Courier;
 
 /**
  * Created by winhtaikaung on 16/5/17.
@@ -53,7 +54,8 @@ public class CourierMerchantListAdapter extends BaseAdapter<BaseAdapter.BaseView
             view = LayoutInflater.from(mContext).inflate(R.layout.courier_item_view, parent, false);
             return new CourierViewHolder(view, this);
         } else if (viewType == MERCHANT_VIEW_HOLDER) {
-            return null;
+            view = LayoutInflater.from(mContext).inflate(R.layout.courier_item_view, parent, false);
+            return new MerchantViewHolder(view, this);
         } else {
             return null;
         }
@@ -64,10 +66,21 @@ public class CourierMerchantListAdapter extends BaseAdapter<BaseAdapter.BaseView
         if (holder.getItemViewType() == COURIER_VIEW_HOLDER) {
             CourierViewHolder vh = (CourierViewHolder) holder;
             //TODO data Binding for Courier View Holder
-
-            Picasso.with(mContext).load("https://randomuser.me/api/portraits/men/" + position + ".jpg").into(vh.ivCourier);
+            Courier c =(Courier) mCourierMerchantList.get(position);
+            vh.tvTitle.setText(c.getName());
+            vh.tvSubtitle.setText(c.getFrom() +" - "+c.getTo());
+            vh.tvDelivery.setText("Etm Departure date "+c.getEtmDelivaryDate());
+//            Picasso.with(mContext).load("https://randomuser.me/api/portraits/men/" + position+1 + ".jpg").into(vh.ivCourier);
+            vh.ivCourier.setVisibility(View.GONE);
         } else if (holder.getItemViewType() == MERCHANT_VIEW_HOLDER) {
-
+            MerchantViewHolder vh = (MerchantViewHolder) holder;
+            //TODO data Binding for Courier View Holder
+            Courier c =(Courier) mCourierMerchantList.get(position);
+            vh.tvTitle.setText(c.getName());
+            vh.tvSubtitle.setText(c.getFrom() +" - "+c.getTo());
+            vh.tvDelivery.setText("Etm Departure date "+c.getEtmDelivaryDate());
+            Picasso.with(mContext).load(c.getImgUrl()).into(vh.ivCourier);
+//            vh.ivCourier.setVisibility(View.GONE);
         } else {
 //            return null;
         }
@@ -102,6 +115,27 @@ public class CourierMerchantListAdapter extends BaseAdapter<BaseAdapter.BaseView
         TextView tvDelivery;
 
         public CourierViewHolder(View itemView, CourierMerchantListAdapter adapter) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            mAdapter = adapter;
+        }
+    }
+
+    class MerchantViewHolder extends BaseViewHolder {
+        @BindView(R.id.imageView)
+        ImageView ivCourier;
+
+        @BindView(R.id.tv_title)
+        TextView tvTitle;
+
+        @BindView(R.id.tv_Subtitle)
+        TextView tvSubtitle;
+
+        @BindView(R.id.tv_delivery)
+        TextView tvDelivery;
+
+        public MerchantViewHolder(View itemView, CourierMerchantListAdapter adapter) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);

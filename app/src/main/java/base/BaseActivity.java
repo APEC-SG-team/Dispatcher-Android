@@ -2,6 +2,8 @@ package base;
 
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -44,6 +46,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 setDisplayHomeEnabled(true);
             }
         }
+        final Drawable upArrow = getResources().getDrawable(R.drawable.nav_back_arrow);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
     }
 
     protected abstract int getLayoutResource();

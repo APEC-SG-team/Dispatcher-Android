@@ -78,7 +78,8 @@ public class CarrierDetailAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder
             Picasso.with(mContext).load(viewItem.getAvatarUrl())
                     .placeholder(mContext.getResources().getDrawable(R.mipmap.ic_profile)).transform(new CircleTransform())
                     .into(vh.ivAvatar);
-            vh.tvName.setText(viewItem.getUserName());
+            vh.ivAvatar.setVisibility(View.GONE);
+            vh.tvName.setText("Thomson Trading Pte.Ltd");
         }
     }
 

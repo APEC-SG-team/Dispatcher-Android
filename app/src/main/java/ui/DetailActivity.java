@@ -1,5 +1,6 @@
 package ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ui.courierdetail.CourierDetailFragment;
+import ui.itemdetail.PackageDetailFragment;
 
 public class DetailActivity extends BaseActivity {
 
@@ -21,8 +23,15 @@ public class DetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        Fragment newFragment = null;
         if (savedInstanceState == null) {
-            Fragment newFragment = new CourierDetailFragment();
+            Intent intent = getIntent();
+            if (!intent.getBooleanExtra("IS_COURIER", false)) {
+                newFragment = new PackageDetailFragment();
+            } else {
+                newFragment = new CourierDetailFragment();
+
+            }
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.container, newFragment).commit();
         }

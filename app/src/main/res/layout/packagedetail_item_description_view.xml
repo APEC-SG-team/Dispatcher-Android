@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TV_DEFAULT_LARGE_BOLD"
-        android:text="Description" />
+        android:text="Copper 5 tons" />
 
     <TextView
         android:id="@+id/tvDescription"

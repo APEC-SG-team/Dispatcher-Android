@@ -8,7 +8,7 @@
         style="@style/TV_DEFAULT_LARGE_BOLD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Review" />
+        android:text="Company Review" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/gray_rectangle"
-                android:src="@drawable/ic_smile_emoticon"
                 android:gravity="center"
                 android:padding="@dimen/default_padding_medium"
+                android:src="@drawable/ic_smile_emoticon"
                 android:text="Happiness" />
 
             <TextView
@@ -55,9 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/gray_rectangle"
-                android:src="@drawable/ic_neutral_emoticon"
                 android:gravity="center"
                 android:padding="@dimen/default_padding_medium"
+                android:src="@drawable/ic_neutral_emoticon"
                 android:text="Happiness" />
 
             <TextView
@@ -82,9 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/gray_rectangle"
-                android:src="@drawable/ic_sad_emoticon"
                 android:gravity="center"
                 android:padding="@dimen/default_padding_medium"
+                android:src="@drawable/ic_sad_emoticon"
                 android:text="Happiness" />
 
             <TextView

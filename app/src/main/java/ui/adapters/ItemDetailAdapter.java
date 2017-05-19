@@ -93,7 +93,7 @@ public class ItemDetailAdapter extends BaseAdapter<BaseAdapter.BaseViewHolder> {
         int view = getItemViewType(position);
         if (view == ITEM_IMG_VIEW) {
             ItemImageViewHolder vh = (ItemImageViewHolder) holder;
-            Picasso.with(mContext).load("https://ae01.alicdn.com/kf/HTB1afDYQFXXXXXKXpXXq6xXFXXXj/Homgeek-Mini-Portable-Compact-Manual-Espresso-Maker-Black-Coffee-Maker-Hand-Operated-Coffee-Machine-Cappuccino-For.jpg")
+            Picasso.with(mContext).load("http://energyandgold.com/wp-content/uploads/2016/11/oxygen_free_copper_rod.png")
 
                     .into(vh.itemView);
         }

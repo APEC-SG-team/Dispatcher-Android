@@ -1,6 +1,7 @@
 package ui.courier;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,22 +9,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.apec.dispatcher.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import base.EndlessRecyclerViewAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import model.Courier;
+import ui.DetailActivity;
 import ui.adapters.CourierMerchantListAdapter;
+import utils.MySharedPreference;
+
+import static ui.profile.ProfileFragment.IS_MERCHANT;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CourierListFragment extends Fragment implements CourierListPresenter.View {
+public class CourierListFragment extends Fragment implements CourierListPresenter.View, AdapterView.OnItemClickListener {
 
     private CourierListPresenter presenter;
     private CourierListInteractor courierListInteractor;
@@ -67,9 +75,14 @@ public class CourierListFragment extends Fragment implements CourierListPresente
 
     void init() {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
-        mCouruerMerchantAdapter = new CourierMerchantListAdapter(true);
+        if (!MySharedPreference.getInstance(this.getContext()).getBooleanPreference(IS_MERCHANT, false)) {
+            mCouruerMerchantAdapter = new CourierMerchantListAdapter(true);
+        }else{
+            mCouruerMerchantAdapter = new CourierMerchantListAdapter(false);
+        }
         mInboxListView.setLayoutManager(mLayoutManager);
         this.showProgress();
+        mCouruerMerchantAdapter.setOnItemClickListener(this);
         mEndlessRecyclerViewAdapter = new EndlessRecyclerViewAdapter(this.getActivity(), mCouruerMerchantAdapter, new EndlessRecyclerViewAdapter.RequestToLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -89,21 +102,40 @@ public class CourierListFragment extends Fragment implements CourierListPresente
     @Override
     public void setCourierList(List<Object> courierList) {
         //TODO bind data from api to list View here
+        if (!MySharedPreference.getInstance(this.getContext()).getBooleanPreference(IS_MERCHANT, false)) {
+            //if merchant is true
+            if (courierList.size() > 0) {
+                if (mCounter == 1) {
+                    this.mCourierList = courierList;
+                } else {
 
-        if (courierList.size() > 0) {
-            if (mCounter == 1) {
-                this.mCourierList = courierList;
+                    this.mCourierList.addAll(courierList);
+
+                }
+                mCouruerMerchantAdapter.setCourierMerchantList(this.mCourierList);
+
+                mEndlessRecyclerViewAdapter.onDataReady(true);
+                mCounter++;
+
             } else {
-
-                this.mCourierList.addAll(courierList);
-
+                mEndlessRecyclerViewAdapter.onDataReady(false);
             }
-            mCouruerMerchantAdapter.setCourierMerchantList(this.mCourierList);
-            mEndlessRecyclerViewAdapter.onDataReady(true);
-            mCounter++;
-
         } else {
-            mEndlessRecyclerViewAdapter.onDataReady(false);
+            //if merchant is false
+            if (courierList.size() > 0) {
+                if (mCounter == 1) {
+                    this.mCourierList = createItemList();
+                } else {
+                    this.mCourierList.addAll(createItemList());
+                }
+                mCouruerMerchantAdapter.setCourierMerchantList(this.mCourierList);
+
+                mEndlessRecyclerViewAdapter.onDataReady(true);
+                mCounter++;
+
+            } else {
+                mEndlessRecyclerViewAdapter.onDataReady(false);
+            }
         }
     }
 
@@ -132,5 +164,39 @@ public class CourierListFragment extends Fragment implements CourierListPresente
         mErrorView.setVisibility(View.GONE);
         mInboxListView.setVisibility(View.VISIBLE);
         tvErrorText.setText(message);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        if (!MySharedPreference.getInstance(this.getContext()).getBooleanPreference(IS_MERCHANT, false)) {
+            Intent intent = new Intent(this.getActivity(), DetailActivity.class);
+            intent.putExtra("IS_COURIER", true);
+
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this.getActivity(), DetailActivity.class);
+            intent.putExtra("IS_COURIER", false);
+
+            startActivity(intent);
+        }
+    }
+
+    private List<Object> createItemList() {
+        List<Object> dummyList = new ArrayList<>();
+
+        String[] names = {"Copper 5 tons", "Alluminium 10 tons", "Office Paper 6 tons", "Vending Machine 2000", "Refrigerator"};
+        String[] from = {"England", "Vietnam", "New Zealand", "Indonesia", "Malaysia"};
+        String[] date = {"12-05-2017", "20-05-2017", "09-07-2017", "08-09-2017", "06-11-2017"};
+        String[] imGurls = {"http://energyandgold.com/wp-content/uploads/2016/11/oxygen_free_copper_rod.png",
+                "https://www.etfsecurities.com/media/352268/aluminium.jpg",
+                "http://www.staples-3p.com/s7/is/image/Staples/s0691352_sc7?$splssku$",
+                "http://pic.made-in-china.com/6f3j00fMnTCYwdracK/Packing-of-Vending-Machine.jpg",
+                "http://www.worldshipping.org/images/ReeferContainer01.jpg"};
+        for (int i = 0; i < 5; i++) {
+            Object dummy = new Courier(names[i], from[i], "Singapore", date[i], imGurls[i]);
+            dummyList.add(dummy);
+        }
+        return dummyList;
     }
 }
