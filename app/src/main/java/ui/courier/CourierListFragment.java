@@ -112,9 +112,9 @@ public class CourierListFragment extends Fragment implements CourierListPresente
                     this.mCourierList.addAll(courierList);
 
                 }
-                mCouruerMerchantAdapter.setCourierMerchantList(this.mCourierList);
+                mCouruerMerchantAdapter.setCourierMerchantList(courierList);
 
-                mEndlessRecyclerViewAdapter.onDataReady(true);
+                mEndlessRecyclerViewAdapter.onDataReady(false);
                 mCounter++;
 
             } else {
@@ -128,9 +128,9 @@ public class CourierListFragment extends Fragment implements CourierListPresente
                 } else {
                     this.mCourierList.addAll(createItemList());
                 }
-                mCouruerMerchantAdapter.setCourierMerchantList(this.mCourierList);
+                mCouruerMerchantAdapter.setCourierMerchantList(createItemList());
 
-                mEndlessRecyclerViewAdapter.onDataReady(true);
+                mEndlessRecyclerViewAdapter.onDataReady(false);
                 mCounter++;
 
             } else {

@@ -142,7 +142,7 @@ public class ProfileFragment extends Fragment implements ProfileListPresenter.Vi
             activity.getSharedPref().setBooleanPreference(IS_MERCHANT, checked);
 //            SettingItem item = (SettingItem) this.mInboxList.get((Integer) view.getTag());
             mProfileListAdapter.setmProfileList(this.mInboxList);
-            iChangeNavIcon.changeBottomNavIcon(0, R.mipmap.ic_product);
+            iChangeNavIcon.changeBottomNavIcon(0, R.drawable.ic_items);
         } else {
             activity.getSharedPref().setBooleanPreference(IS_MERCHANT, checked);
             mProfileListAdapter.setmProfileList(this.mInboxList);

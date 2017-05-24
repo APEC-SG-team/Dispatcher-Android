@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:text="Hello from tello"
+            android:text="Hello from Dispatcher"
             android:textColor="@color/from"
             android:textSize="@dimen/msg_text_primary"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:text="Find something new from Tello"
+            android:text="Welcome from Dispature Global Delivery Network"
             android:textColor="@color/subject"
             android:textSize="@dimen/msg_text_secondary"
             android:textStyle="bold" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="1"
-            android:text="Find your new Tello Number to get promo on 5%"
+            android:text="Find your places to get promo on 5%"
             android:textColor="@color/message"
             android:textSize="@dimen/msg_text_secondary" />
 

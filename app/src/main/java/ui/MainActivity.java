@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         }
         if (this.getSharedPref().getBooleanPreference(IS_MERCHANT, false)) {
             this.titles[0] = "Packages";
-            changeBottomNavIcon(0, R.mipmap.ic_product);
+            changeBottomNavIcon(0, R.drawable.ic_items);
         } else {
             this.titles[0] = "Carrier";
             changeBottomNavIcon(0, R.drawable.ic_carrier);

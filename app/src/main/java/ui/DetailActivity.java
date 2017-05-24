@@ -28,8 +28,10 @@ public class DetailActivity extends BaseActivity {
             Intent intent = getIntent();
             if (!intent.getBooleanExtra("IS_COURIER", false)) {
                 newFragment = new PackageDetailFragment();
+                this.getSupportActionBar().setTitle("Copper 5 tons");
             } else {
                 newFragment = new CourierDetailFragment();
+                this.getSupportActionBar().setTitle("");
 
             }
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

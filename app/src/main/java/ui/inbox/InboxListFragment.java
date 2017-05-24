@@ -78,7 +78,7 @@ public class InboxListFragment extends Fragment implements InboxListPresenter.Vi
             @Override
             public void onLoadMoreRequested() {
 
-                if (mCounter < 5) {
+                if (mCounter == 1) {
                     presenter.getInboxList("3");
                 } else {
                     presenter.getInboxList("3");
@@ -99,11 +99,11 @@ public class InboxListFragment extends Fragment implements InboxListPresenter.Vi
                 this.mInboxList = inboxList;
             } else {
 
-                this.mInboxList.addAll(inboxList);
+//                this.mInboxList.addAll(inboxList);
 
             }
             mInboxListAdapter.setmInboxList(this.mInboxList);
-            mEndlessRecyclerViewAdapter.onDataReady(true);
+            mEndlessRecyclerViewAdapter.onDataReady(false);
             mCounter++;
 
         } else {

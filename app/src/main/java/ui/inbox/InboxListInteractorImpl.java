@@ -25,7 +25,7 @@ public class InboxListInteractorImpl implements InboxListInteractor {
 
     private List<Object> createDummyInboxList() {
         List<Object> dummyList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             Object dummy = new Object();
             dummyList.add(dummy);
         }

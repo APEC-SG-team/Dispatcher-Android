@@ -77,6 +77,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         return toolBar;
     }
 
+
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
